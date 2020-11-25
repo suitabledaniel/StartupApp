@@ -25,11 +25,17 @@ class MainActivity : Fragment(), OnMapReadyCallback {
     ): View? {
         val rootView: View = inflater.inflate(R.layout.fragment_first, container, false)
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapview) as SupportMapFragment
+        mapFragment.getMapAsync(this)
         return rootView
     }
 
 
-    override fun onMapReady(p0: GoogleMap?) {
-        TODO("Not yet implemented")
+    override fun onMapReady(googleMap : GoogleMap?) {
+        if (googleMap != null) {
+            mMap = googleMap
+        }
+        val marker = LatLng(35.241615, 128.695587)
+        mMap.addMarker(MarkerOptions().position(marker).title("Marker KIM"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(marker))
     }
 }
