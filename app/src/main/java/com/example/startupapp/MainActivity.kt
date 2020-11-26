@@ -21,14 +21,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val SEOUL = LatLng(128.1076213 , 35.1799817)
+        val JINJU = LatLng( 35.1799817, 128.1076213)
         val markerOptions = MarkerOptions()
-        markerOptions.position(SEOUL)
+        markerOptions.position(JINJU)
         markerOptions.title("JINJU")
         markerOptions.snippet("GYEUNANM")
         mMap!!.addMarker(markerOptions)
 
-        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(SEOUL, 10f))
+        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(JINJU, 10f))
     }
 
 }
