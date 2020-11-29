@@ -39,16 +39,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //editTxt = findViewById(R.id.search_edit_txt)
-        searchBtn = findViewById(R.id.search_btn) as Button
-        searchBtn?.setOnClickListener {
-            Log.d("EditText", editTxt!!.text.toString())
-        }
-    }
-
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
         Places.initialize(this, apiKey)
         mPlacesClient = Places.createClient(this)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.mapview) as SupportMapFragment?
@@ -57,13 +47,25 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
         var autoCompleteEditText = findViewById(R.id.autoCompleteEditText) as AutoCompleteTextView
         autoCompleteEditText.setAdapter(placeAdapter)
 
+        searchBtn = findViewById(R.id.search_btn) as Button
+        searchBtn?.setOnClickListener {
+            Log.d("TEST", autoCompleteEditText?.text.toString())
+        }
+
         autoCompleteEditText.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
+
             val place = parent.getItemAtPosition(position) as PlaceDataModel
             autoCompleteEditText.apply {
+                Log.d("TEST",place.toString())
                 setText(place.fullText)
                 setSelection(autoCompleteEditText.length())
             }
         }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onPostCreate(savedInstanceState, persistentState)
+
 
     }
 
@@ -76,7 +78,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
         markerOptions.title("JINJU")
         markerOptions.snippet("GYEUNANM")
         mMap!!.addMarker(markerOptions)
-
 
         mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(JINJU, 10f))
     }
