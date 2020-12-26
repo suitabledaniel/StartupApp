@@ -24,11 +24,15 @@
                 android:singleLine="true"
                 android:layout_weight="8"
                 android:id="@+id/autoCompleteEditText"/>
+
             <Button
+                android:id="@+id/search_btn"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:id="@+id/search_btn"/>
+                android:text="go!"
+                app:backgroundTint="@android:color/black" />
 
         </LinearLayout>
 

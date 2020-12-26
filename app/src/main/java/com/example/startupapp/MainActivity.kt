@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
     private lateinit var mPlacesClient: PlacesClient
     private var placeAdapter:PlaceArrayAdapter? = null
 
+    private var mPosition : Int? = null
+
     private val LATLNG = mapOf("Lat" to 35.1799817, "Lng" to 128.1076213)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
         searchBtn = findViewById(R.id.search_btn) as Button
         searchBtn?.setOnClickListener {
             Log.d("TEST", autoCompleteEditText?.text.toString())
+
+//            val JINJU = LatLng((LATLNG["Lat"] ?: error("didn't Double Type")).toDouble(), (LATLNG["Lng"]
+//                    ?: error("didn't Double Type")).toDouble())
+//            val markerOptions = MarkerOptions()
+//            markerOptions.position(JINJU)
+//            markerOptions.title("JINJU")
+//            markerOptions.snippet("GYEUNANM")
+//            mMap!!.addMarker(markerOptions)
+//
+//            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(JINJU, 10f))
+
         }
 
         autoCompleteEditText.onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
@@ -57,6 +70,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListen
             val place = parent.getItemAtPosition(position) as PlaceDataModel
             autoCompleteEditText.apply {
                 Log.d("TEST",place.toString())
+                Log.d("TEST",position.toString())
+                mPosition = position
                 setText(place.fullText)
                 setSelection(autoCompleteEditText.length())
             }
