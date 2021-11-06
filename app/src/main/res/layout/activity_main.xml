@@ -49,49 +49,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <RelativeLayout
-            android:id="@+id/activity_main_content_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/design_default_color_primary_dark"
-            android:clipToPadding="false" >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="start"
-                    android:singleLine="true"
-                    android:layout_weight="8"
-                    android:id="@+id/autoCompleteEditText"/>
-
-                <Button
-                    android:id="@+id/search_btn"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:text="go!"
-                    app:backgroundTint="@android:color/black" />
-
-            </LinearLayout>
-
-            <fragment
-                android:id="@+id/mapview"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="9"
-                tools:context=".MapsActivity"
-                tools:layout="@layout/abc_search_view" />
-
-
-        </RelativeLayout>
-
     </LinearLayout>
     <!-- Main Activity End -->
 
